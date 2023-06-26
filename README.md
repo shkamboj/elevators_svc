@@ -9,3 +9,4 @@ An elevator system, which can be initialised with N elevators and maintains the 
 2. Install django and django rest framework using : `pip install django djangorestframework`
 3. Add requirements into requirements.txt
 4. Setup Django using  `django-admin startproject elevators_svc .`
+5. Create apps `users` and `elevators` using `python manage.py startapp <app_name>`
