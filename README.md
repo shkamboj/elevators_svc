@@ -10,3 +10,7 @@ An elevator system, which can be initialised with N elevators and maintains the 
 3. Add requirements into requirements.txt
 4. Setup Django using  `django-admin startproject elevators_svc .`
 5. Create apps `users` and `elevators` using `python manage.py startapp <app_name>`
+6. For setting it database connection : `pip install psycopg2-binary`
+7. Add `DB_NAME`, `DB_USERNAME`, `DB_PORT`, `DB_PASSWORD` `DB_HOST` variables into .env
+8. Run `pip install python-decouple`
+9. 
