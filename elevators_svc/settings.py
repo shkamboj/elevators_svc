@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'elevators',
     'users',
     'rest_framework',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
