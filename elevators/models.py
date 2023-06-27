@@ -1,6 +1,6 @@
 from django.db import models
 
-from .choices import DoorState
+from .choices import DoorState, ElevatorCondition, ElevatorDirection
 
 # Create your models here.
 
@@ -8,4 +8,7 @@ from .choices import DoorState
 
 class Elevator(models.Model):
     
-    door_state = models.CharField(max_length=20, choices=DoorState.choices(), default=DoorState.CLOSED.value)
+    door_state = models.CharField(max_length=32, choices=DoorState.choices(), default=DoorState.CLOSED.value)
+    elevator_condtion = models.CharField(max_length=32, choices=ElevatorCondition.choices(), default=ElevatorCondition.WORKING.value)
+    current_direction = models.CharField(max_length=32, choices=ElevatorDirection.choices(), default=ElevatorDirection.STILL.value)
+    
