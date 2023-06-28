@@ -1,4 +1,4 @@
-from .models import Elevator
+from .models import Elevator, ElevatorRequest
 from .choices import ElevatorCondition, DoorState, ElevatorDirection
 
 def process_elevator_request(elevator_request):
@@ -24,16 +24,23 @@ def process_elevator_request(elevator_request):
     # if no criteria is followed from above ones then we will take the first.
     if not closest_elevator:
         closest_elevator = distances[0][1]
-        
+            
     if current_floor < destination_floor:
         elevator_new_direction = ElevatorDirection.MOVING_UP.value
     else:
         elevator_new_direction = ElevatorDirection.MOVING_DOWN.value
     
-    #### Elevator is moving.. 
-    
+    elevator_request.elevator = closest_elevator
+    elevator_request.save()    
+
     closest_elevator.current_direction = elevator_new_direction
     closest_elevator.save()
+    
+    # As we consider that as soon as request is received, the elevator reaches on destination
+    closest_elevator.next_destination = destination_floor
+    closest_elevator.save()
+        
+    #### Elevator is moving.. 
     
     # -- 
     # --
@@ -57,5 +64,4 @@ def process_elevator_request(elevator_request):
     closest_elevator.save()
     
     elevator_request.processed = True
-    elevator_request.elevator = closest_elevator
     elevator_request.save()
