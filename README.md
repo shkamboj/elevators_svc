@@ -1,10 +1,11 @@
 # elevators_svc
 An elevator system, which can be initialised with N elevators and maintains the elevator states as well.
 
-## base requirements
-1. python - 3.7.6
+## Base Requirements
+1. Python - 3.7.6
+2. PostgreSQL - psql (PostgreSQL) 10.22 (Ubuntu 10.22-0ubuntu0.18.04.1)
 
-## setup steps
+## Setup Steps
 1. Create a virtual environment using command `virtualenv -p python3 venvElevators` and activate it. 
 2. Install django and django rest framework using : `pip install django djangorestframework`
 3. Add requirements into requirements.txt
@@ -30,5 +31,4 @@ An elevator system, which can be initialised with N elevators and maintains the 
 
 ## Assumptions made 
 1. As soon as request comes, it gets served, so only one destination at a time. 
-2. No floor limit added. 
-3. 
+2. No floor limit added.
