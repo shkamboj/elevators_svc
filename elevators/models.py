@@ -12,6 +12,7 @@ class Elevator(models.Model):
     elevator_condtion = models.CharField(max_length=32, choices=ElevatorCondition.choices(), default=ElevatorCondition.WORKING.value)
     current_direction = models.CharField(max_length=32, choices=ElevatorDirection.choices(), default=ElevatorDirection.STILL.value)
     current_floor = models.IntegerField(default=0)
+    next_destination = models.IntegerField(null=True, blank=True)
     
 
 class ElevatorRequest(models.Model):

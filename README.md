@@ -13,4 +13,3 @@ An elevator system, which can be initialised with N elevators and maintains the 
 6. For setting it database connection : `pip install psycopg2-binary`
 7. Add `DB_NAME`, `DB_USERNAME`, `DB_PORT`, `DB_PASSWORD` `DB_HOST` variables into .env
 8. Run `pip install python-decouple`
-9. 
