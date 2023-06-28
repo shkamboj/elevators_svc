@@ -24,8 +24,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from elevators.urls import router as elevator_router
+from elevators.views import ElevatorCreateAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(elevator_router.urls)),
+    path('create-elevators/', ElevatorCreateAPIView.as_view(), name='elevator-create'),
 ]

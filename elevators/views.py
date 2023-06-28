@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.generics import CreateAPIView
 
 from .choices import ElevatorCondition, ElevatorDirection, DoorState
 
@@ -8,13 +9,35 @@ from .models import Elevator, ElevatorRequest
 from .serializers import ElevatorSerializer, ElevatorRequestSerializer
 from .managers import process_elevator_request
 
+from .serializers import ElevatorSerializer
+
+class ElevatorCreateAPIView(CreateAPIView):
+    serializer_class = ElevatorSerializer
+
+    def create(self, request, *args, **kwargs):
+        """To create n elevators. 
+        """
+        num_elevators = int(request.data.get('num_elevators', 0))
+
+        elevators = [
+            Elevator()
+            for _ in range(num_elevators)
+        ]
+
+        Elevator.objects.bulk_create(elevators)
+        response = {
+            'message': 'Elevators created successfully',
+        }
+        return Response(response, status=status.HTTP_201_CREATED)
+
+
 class ElevatorViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Elevator.objects.all()
     serializer_class = ElevatorSerializer
     
     # Fetch the next destination floor for a given elevator
     # Fetch if the elevator is moving up or down currently
-    ## All these can be looked from GET API -> /api/elevators/1/
+    ## All these can be looked from GET API -> /api/elevators/<elevator_id>/
 
 
     @action(url_path = "mark-not-working", detail=True, methods=['PATCH'])
