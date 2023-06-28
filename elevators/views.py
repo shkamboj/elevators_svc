@@ -104,7 +104,6 @@ class ElevatorRequestViewSet(viewsets.ViewSet):
             elevator_request = serializer.save()
             process_elevator_request(elevator_request)
             data = ElevatorRequestSerializer(elevator_request).data
-            print(data)
             return Response(data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
