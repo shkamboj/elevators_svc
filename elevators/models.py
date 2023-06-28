@@ -15,7 +15,7 @@ class Elevator(models.Model):
     
 
 class ElevatorRequest(models.Model):
-    elevator = models.ForeignKey(Elevator, on_delete=models.CASCADE)
+    elevator = models.ForeignKey(Elevator, on_delete=models.CASCADE, null=True)
     current_floor = models.IntegerField()
     destination_floor = models.IntegerField()
     processed = models.BooleanField(default=False)
